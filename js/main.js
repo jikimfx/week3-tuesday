@@ -9,7 +9,7 @@ function addItem() {
 
     items.push({
         value: item,
-        time: new Date()
+        time: (new Date()).toLocaleDateString('vi-VN')
     });
 
     localStorage.setItem('todoList', JSON.stringify(items));
@@ -38,7 +38,7 @@ function showItems() {
     for (let i = 0; i < items.length; i++) {
         list += "<li class=" + (items[i].done ? "bg-lightgreen" : "") + ">";
         list +='<i class="fa fa-ellipsis-v mr-1"></i><i class="fa fa-ellipsis-v mr-2"></i>';
-        list += items[i].value + " ";
+        list += items[i].value + "<span class='ml-5'>added on</span> " + items[i].time;
         list += '<div class="tools">';
         list += "<i class='fa fa-check mr-2' onclick='markDone(" + i + ")'></i>";
         list += "<i class='fa fa-trash-o mr-2' onclick='deleteItem(" + i + ")'></i>";
