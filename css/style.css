@@ -7,6 +7,14 @@ body {
     border-top-color: #00a65a !important;
 }
 
+.box.box-aqua {
+    border-top-color: #00c0ef !important;
+}
+
+.bg-lightgreen {
+    background-color: #c7ffb0 !important;
+}
+
 .box {
     position: relative;
     border-radius: 3px;

@@ -1,5 +1,6 @@
 let items = JSON.parse(localStorage.getItem('todoList')) || [];
 
+// add item
 function addItem() {
     let inputBox = document.getElementById('todoInput');
     let item = inputBox.value;
@@ -17,28 +18,29 @@ function addItem() {
     inputBox.value = "";
 }
 
+// delete item
 function deleteItem(item) {
     items.splice(item, 1);
     localStorage.setItem('todoList', JSON.stringify(items));
     showItems();
 }
 
-function markAsDone(item) {
+// mark as complete
+function markDone(item) {
     items[item].done = !items[item].done;
     localStorage.setItem('todoList', JSON.stringify(items));
     showItems();
 }
 
-
-// function that generates list of items and populates the html
+// generate list
 function showItems() {
     let list = "";
     for (let i = 0; i < items.length; i++) {
-        list += "<li class=" + (items[i].done ? "done" : "") + ">";
+        list += "<li class=" + (items[i].done ? "bg-lightgreen" : "") + ">";
         list +='<i class="fa fa-ellipsis-v mr-1"></i><i class="fa fa-ellipsis-v mr-2"></i>';
         list += items[i].value + " ";
-        list += "<div class='tools'>";
-        list += "<i class='fa fa-check mr-2' onclick='markAsDone(" + i + ")'></i>";
+        list += '<div class="tools">';
+        list += "<i class='fa fa-check mr-2' onclick='markDone(" + i + ")'></i>";
         list += "<i class='fa fa-trash-o mr-2' onclick='deleteItem(" + i + ")'></i>";
         list += '</div>';
     }
